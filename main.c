@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <stdbool.h>
+#include "header.h"
 
 void menu()
 {
@@ -21,12 +22,13 @@ void menu()
     scanf("%d", &choice);
 
     system("cls");
-    /*
+
     switch (choice)
     {
     case 1:
         new_acc(); //Function to make accounts
         break;
+        /*
     case 2:
         edit(); //Function to edit accounts
         break;
@@ -47,6 +49,7 @@ void menu()
         break;
     }
     */
+    }
 }
 int main()
 {
