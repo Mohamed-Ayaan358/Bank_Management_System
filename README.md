@@ -6,15 +6,15 @@ Problem statements:-
 The transactions have to be secured by using file level encryption-decryption.
 Expected self learning: Encryption and decryption at files.
 Following are the details to be stored in an account:
- Customer name
- Bank account number
- IFSC code
- Balance(savings account)
- UPI handler
- UPI password
+ Customer name
+ Bank account number
+ IFSC code
+ Balance(savings account)
+ UPI handler
+ UPI password
 Following transactions are required:
 Withdraw money(UPI)
- NEFT
- (debit+credit)
- Balance enquiry
- Register for UPI handler/change UPI password
+ NEFT
+ (debit+credit)
+ Balance enquiry
+ Register for UPI handler/change UPI password
