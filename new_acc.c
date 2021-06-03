@@ -17,7 +17,8 @@ struct
 {
 
     char name[60];
-    int acc_no, age;
+    long int acc_no; 
+    int age;
     char ifsc[60];
     char upih[30];
     char upip[30];
