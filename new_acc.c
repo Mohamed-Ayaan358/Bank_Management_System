@@ -1,8 +1,7 @@
-#include <stdio.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <windows.h>
+#include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 int i, j;
 int menu_exit;
@@ -17,7 +16,8 @@ struct
 {
 
     char name[60];
-    int acc_no, age;
+    int acc_no;
+    int pin;
     char ifsc[60];
     char upih[30];
     char upip[30];
@@ -28,7 +28,7 @@ struct
     struct date deposit;
     struct date withdraw;
 
-} add, upd, check, rem, transaction; /*Allows you to refer to the struct using different access points*/
+} add, update, check, rem, transact; /*Allows you to refer to the struct using different access points*/
 
 void fordelay(int j)
 {
@@ -50,8 +50,10 @@ void new_acc()
     scanf("%d/%d/%d", &add.deposit.month, &add.deposit.day, &add.deposit.year);
     printf("\n Enter the account number:");
     scanf("%d", &check.acc_no);
+    printf("\n Enter a 4 digit pin:");
+    scanf("%d", &add.pin);
 account_no:
-    while (fscanf(ptr, "%d %s %d/%d/%d %d %s %s %s  %lf %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.age, &add.ifsc, &add.upih, &add.upip, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
+    while (fscanf(ptr, "%d %s %d/%d/%d  %s %s %s %pin %lf %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     /*fscanf is used to read data from a particular file in this case ptr*/
     {
         if (check.acc_no == add.acc_no)
@@ -67,8 +69,6 @@ account_no:
     scanf("%s", add.name);
     printf("\n Enter the date of birth(mm/dd/yyyy): ");
     scanf("%d/%d/%d", &add.dob.month, &add.dob.day, &add.dob.year);
-    printf("\n Enter the age: ");
-    scanf("%d", &add.age);
     printf("\n Enter the IFSC code: ");
     scanf("%s", add.ifsc);
     printf("\n Enter the UPI handler:");
@@ -82,10 +82,10 @@ account_no:
     printf("\nType of account:\n\t#Saving\n\t#Current\n\t#Fixed1(for 1 year)\n\t#Fixed2(for 2 years)\n\t#Fixed3(for 3 years)\n\n\tEnter your choice:");
     scanf("%s", add.acc_type);
 
-    fprintf(ptr, "%d %s %d/%d/%d %d %s %s %s %lf %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.age, add.ifsc, add.upih, add.upip, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+    fprintf(ptr, "%d %s %d/%d/%d %s %s %s %d %lf %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
 
     fclose(ptr);
-    printf("\nAccount created successfully!");
+    printf("\nAccount created successfully");
 add_invalid:
     printf("\n\n\n\t\tEnter 1 to go to the main menu and 0 to exit:");
     scanf("%d", &menu_exit);

@@ -19,7 +19,8 @@ struct
 {
 
     char name[60];
-    int acc_no, age;
+    int acc_no;
+    int pin;
     char ifsc[60];
     char upih[30];
     char upip[30];
@@ -30,7 +31,7 @@ struct
     struct date deposit;
     struct date withdraw;
 
-} add, upd, check, rem, transact;
+} add, update, check, rem, transact;
 void view_list()
 {
     FILE *view;
@@ -38,7 +39,7 @@ void view_list()
     int test = 0;
     system("cls");
     printf("\nACC. NO.\tNAME\t\t ACCOUNT_TYPE\t\t\tPHONE\n");
-    while (fscanf(view, "%d %s %d/%d/%d %d %s %s %s %lf %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.age, &add.ifsc, &add.upih, &add.upip, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
+    while (fscanf(view, "%d %s %d/%d/%d %s %s %s %d %lf %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     {
         printf("\n%6d\t %10s\t\t%10s \t\t\t%.0lf", add.acc_no, add.name, add.acc_type, add.phone);
         test++;
