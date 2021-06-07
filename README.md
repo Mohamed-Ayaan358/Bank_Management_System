@@ -4,7 +4,7 @@ This repository contains the code which we have used for a computer project allo
 
 Problem statements:-
 The transactions have to be secured by using file level encryption-decryption.
-Expected self learning: Encryption and decryption at files.
+Possible foray: Encryption and decryption at files.
 
        Following are the details to be stored in an account:
 
