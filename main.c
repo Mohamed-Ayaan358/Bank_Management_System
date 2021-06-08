@@ -41,10 +41,10 @@ ret:
         }
 
         break;
-        /*
     case 2:
         edit(); //Function to edit accounts
         break;
+        /*
     case 3:
         transact(); //Function to complete transactions
         break;
