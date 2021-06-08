@@ -28,7 +28,7 @@ struct
     struct date deposit;
     struct date withdraw;
 
-} add, update, check, rem, transact; /*Allows you to refer to the struct using different access points*/
+} add, check; /*Allows you to refer to the struct using different access points*/
 
 void fordelay(int j)
 {
@@ -69,12 +69,14 @@ account_no:
     scanf("%s", add.name);
     printf("\n Enter the date of birth(mm/dd/yyyy): ");
     scanf("%d/%d/%d", &add.dob.month, &add.dob.day, &add.dob.year);
+    system("cls");
     printf("\n Enter the IFSC code: ");
     scanf("%s", add.ifsc);
     printf("\n Enter the UPI handler:");
     scanf("%s", add.upih);
     printf("\n Enter the UPI password:");
     scanf("%s", add.upip);
+    system("cls");
     printf("\n Enter the phone number: ");
     scanf("%lf", &add.phone);
     printf("\n Enter the amount to deposit: ");
