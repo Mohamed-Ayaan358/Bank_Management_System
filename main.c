@@ -11,13 +11,15 @@ void menu()
     char check[10];
     system("cls");
 
-    printf("\n\n\t\t\t\t\t\t\t      BANKING MANAGEMENT SYSTEM");
-    printf("\n\n\t\t\t\t\t\t\t\xB2\xB2\xB2\xB2\xB2 WELCOME TO THE MAIN MENU \xB2\xB2\xB2\xB2\xB2");
-    printf("\n\n\t\t[1] Create a new account");
-    printf("\n\t\t[2] Update information of existing account");
-    printf("\n\t\t[3] Transactions\n\t\t[4] Check the details of existing account");
-    printf("\n\t\t[5] Remove existing account\n\t\t[6] View customer's list");
-    printf("\n\t\t[7] ATM Feature");
+    printf("\n\n\t\t\t\t\tBANKING MANAGEMENT SYSTEM");
+    printf("\n\n\t\t\t\t  \xB2\xB2\xB2\xB2\xB2 WELCOME TO THE MAIN MENU \xB2\xB2\xB2\xB2\xB2");
+    printf("\n\n\t\t[1] Create a new account");                 //DONE
+    printf("\n\t\t[2] Update information of existing account"); //DONE
+    printf("\n\t\t[3] Transactions");
+    printf("\n\t\t[4] Check the details of existing account");
+    printf("\n\t\t[5] Remove existing account");
+    printf("\n\t\t[6] View customer's list"); //DONE
+    printf("\n\t\t[7] ATM Feature");          //MAYBE TRY OUT A UPI TRANSACTION SYSTEM
     printf("\n\t\t[8] Exit");
 
     printf("\n\n\t\t Enter your choice : ");
