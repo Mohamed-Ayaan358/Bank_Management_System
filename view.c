@@ -1,37 +1,16 @@
-
-
 #include <stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
 #include <stdbool.h>
+#include "header.h"
 
 int i, j;
 int menu_exit;
 void menu();
 int atm();
 void close();
-struct date
-{
-    int month, day, year;
-};
-struct
-{
 
-    char name[60];
-    int acc_no;
-    int pin;
-    char ifsc[60];
-    char upih[30];
-    char upip[30];
-    char acc_type[10];
-    double phone;
-    float amt;
-    struct date dob;
-    struct date deposit;
-    struct date withdraw;
-
-} add, update, check, rem, transact;
 void view_list()
 {
     FILE *view;
