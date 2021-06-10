@@ -2,33 +2,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "header.h"
 
 int i, j;
 int menu_exit;
 void menu();
 int atm();
 void close();
-struct date
-{
-    int month, day, year;
-};
-struct
-{
-
-    char name[60];
-    int acc_no;
-    int pin;
-    char ifsc[60];
-    char upih[30];
-    char upip[30];
-    char acc_type[10];
-    double phone;
-    float amt;
-    struct date dob;
-    struct date deposit;
-    struct date withdraw;
-
-} add, check; /*Allows you to refer to the struct using different access points*/
 
 void fordelay(int j)
 {
