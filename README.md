@@ -22,12 +22,12 @@ Possible foray: Encryption and decryption at files.
 
         Following transactions are required:
 
-- [] Withdraw money(UPI)
+- [ ] Withdraw money(UPI)
 
-- [] NEFT 
+- [ ] NEFT 
 
-- [] (debit+credit) 
+- [ ] (debit+credit) 
 
-- [] Balance enquiry 
+- [ ] Balance enquiry 
 
 - [x] Register for UPI handler/change UPI password 
