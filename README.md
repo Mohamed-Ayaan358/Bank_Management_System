@@ -8,26 +8,26 @@ Possible foray: Encryption and decryption at files.
 
        Following are the details to be stored in an account:
 
-Customer name - [x]
+- [x] Customer name 
 
-Bank account number - [x]
+- [x] Bank account number 
 
-IFSC code - [x]
+- [x] IFSC code 
 
-Balance(savings account) - [x]
+- [x] Balance(savings account) 
 
-UPI handler - [x]
+- [x] UPI handler
 
-UPI password - [x]
+- [x] UPI password 
 
         Following transactions are required:
 
-Withdraw money(UPI) - []
+- [] Withdraw money(UPI)
 
-NEFT - []
+- [] NEFT 
 
-(debit+credit) - []
+- [] (debit+credit) 
 
-Balance enquiry - []
+- [] Balance enquiry 
 
-Register for UPI handler/change UPI password -[x]
+- [x] Register for UPI handler/change UPI password 
