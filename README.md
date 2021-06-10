@@ -34,5 +34,14 @@ Possible foray: Encryption and decryption at files.
 
 # Progress so far:
 
-1.
-    ![Alt text](/images/main.png)
+1.Main page and access points options
+![Alt text](/images/main.png)
+
+2.Page to add records
+![Alt text](/images/add_record.png)
+
+3.Page to view customer list
+![Alt text](/images/view.png)
+
+4.Page to update customer information
+![Alt text](/images/update.png)
