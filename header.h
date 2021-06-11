@@ -17,6 +17,8 @@ struct
     struct date dob;
     struct date deposit;
     struct date withdraw;
+    
+    char upinp[30];
 
 } add, update, check, rem, upi, transact; /*Allows you to refer to the struct using different access points*/
 
