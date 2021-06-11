@@ -12,7 +12,7 @@ struct
     char upih[30];
     char upip[30];
     char acc_type[10];
-    double phone;
+    char phone[11];
     float amt;
     struct date dob;
     struct date deposit;
