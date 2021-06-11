@@ -23,6 +23,10 @@ struct
 
 } add, update, check, rem, upi, transact; /*Allows you to refer to the struct using different access points*/
 
+void new_acc();
+void view_list();
+void edit();
+
 struct var
 {
 	int a, b;
@@ -50,6 +54,4 @@ struct var
 	int ch_6, ch_7;
 }s;
 
-void new_acc();
-void view_list();
-void edit();
+
