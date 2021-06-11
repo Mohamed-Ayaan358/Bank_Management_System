@@ -19,6 +19,7 @@ struct
     struct date withdraw;
     
     char upinp[30];
+    char new_phone[11];
 
 } add, update, check, rem, upi, transact; /*Allows you to refer to the struct using different access points*/
 
