@@ -33,7 +33,7 @@ void new_acc()
     printf("\n Enter a 4 digit pin:");
     scanf("%d", &add.pin);
 account_no:
-    while (fscanf(ptr, "%d %s %d/%d/%d  %s %s %s %d %lf %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
+    while (fscanf(ptr, "%d %s %d/%d/%d  %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     /*fscanf is used to read data from a particular file in this case ptr*/
     {
         if (check.acc_no == add.acc_no)
@@ -64,7 +64,7 @@ account_no:
     printf("\nType of account:\n\t#Saving\n\t#Current\n\t#Fixed1(for 1 year)\n\t#Fixed2(for 2 years)\n\t#Fixed3(for 3 years)\n\n\tEnter your choice:");
     scanf("%s", add.acc_type);
 
-    fprintf(ptr, "%d %s %d/%d/%d %s %s %s %d %lf %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+    fprintf(ptr, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
 
     fclose(ptr);
     printf("\nAccount created successfully");
