@@ -18,7 +18,7 @@ struct
     struct date deposit;
     struct date withdraw;
 
-} add, update, check, rem, transact; /*Allows you to refer to the struct using different access points*/
+} add, update, check, rem, upi, transact; /*Allows you to refer to the struct using different access points*/
 
 void new_acc();
 void view_list();
