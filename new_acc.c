@@ -58,7 +58,7 @@ account_no:
     scanf("%s", add.upip);
     system("cls");
     printf("\n Enter the phone number: ");
-    scanf("%lf", &add.phone);
+    scanf("%s", &add.phone);
     printf("\n Enter the amount to deposit: ");
     scanf("%f", &add.amt);
     printf("\nType of account:\n\t#Saving\n\t#Current\n\t#Fixed1(for 1 year)\n\t#Fixed2(for 2 years)\n\t#Fixed3(for 3 years)\n\n\tEnter your choice:");

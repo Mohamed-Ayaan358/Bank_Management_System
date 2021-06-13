@@ -20,7 +20,7 @@ void view_list()
     printf("\nACC. NO.\tNAME\t\t ACCOUNT_TYPE\t\t\tPHONE\n");
     while (fscanf(view, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     {
-        printf("\n%6d\t %10s\t\t%10s \t\t\t%.0s", add.acc_no, add.name, add.acc_type, add.phone);
+        printf("\n%6d\t %10s\t\t%10s \t\t\t%s", add.acc_no, add.name, add.acc_type, add.phone);
         test++;
     }
     fclose(view);
