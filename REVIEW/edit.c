@@ -18,30 +18,29 @@ void edit(void)
     old = fopen("record.dat", "r");
     newrec = fopen("new.dat", "w");
 
-    printf("\nEnter the account no. of the customer whose info you want to change:");
+    printf("\nEnter the account number of the customer whose critical information you want to change:");
     scanf("%d", &update.acc_no);
-    while (fscanf(old, "%d %s %d/%d/%d %s %s %s %d %lf %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
+    while (fscanf(old, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     {
         if (add.acc_no == update.acc_no)
         {
             test = 1;
         redo:
-            printf("\nWhich information do you want to change?\n[1] UPI_Handler\n[2]UPI_Password\n[3] Phone\n\n");
+            printf("\nWhich information do you want to change?\n[1] Name\n[2] Date_of_birth\n[3] Phone\n\n");
             printf("Enter choice:");
             scanf("%d", &choice);
 
-            //CONSTRUCTION IN PROGRESS PLEASE DO NOT EXECUTE THIS FILE
             if (choice == 1)
             {
-                printf("Your current UPI_Handler : %s\n", add.upih);
+                printf("Your current Name is : %s\n", add.name);
             retry:
-                printf("Are you sure you want to change your upi handler[Y/N]? ");
+                printf("Are you sure you want to change your Name[Y/N]? ");
                 scanf("%s", agree);
                 if (strcmp(agree, "Y") == 0)
                 {
-                    printf("Enter you new UPI handler : ");
-                    scanf("%s", update.upih);
-                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %lf %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, update.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                    printf("Enter you new Name : ");
+                    scanf("%s", &update.name);
+                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, update.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                     system("cls");
                     printf("Changes saved!");
                 }
@@ -51,20 +50,20 @@ void edit(void)
                 }
                 else
                 {
-                    printf("This entry is invalid");
+                    printf("This entry is invalid\n");
                     goto retry;
                 }
             }
             else if (choice == 2)
             {
-                printf("Your current UPI_password : %s\n", add.upip);
-                printf("Are you sure you want to change your upi password[Y/N]? ");
+                printf("Your current Date_of_birth : %d/%d/%d \n", add.dob.day, add.dob.month, add.dob.year);
+                printf("Are you sure you want to change your Date_of_birth[Y/N]? ");
                 scanf("%s", agree);
                 if (strcmp(agree, "Y") == 0)
                 {
-                    printf("Enter you new UPI password : ");
-                    scanf("%s", update.upip);
-                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %lf %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, update.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                    printf("Enter you new Date_of_birth : ");
+                    scanf("%d/%d/%d", &update.dob.day, &update.dob.month, &update.dob.year);
+                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, update.dob.day, update.dob.month, update.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                     system("cls");
                     printf("Changes saved!");
                 }
@@ -74,20 +73,20 @@ void edit(void)
                 }
                 else
                 {
-                    printf("This entry is invalid");
+                    printf("This entry is invalid\n");
                     goto retry;
                 }
             }
             else if (choice == 3)
             {
-                printf("Your current Phone : %lf\n", add.phone);
-                printf("Are you sure you want to change your upi password[Y/N]? ");
+                printf("Your current Phone number: %s\n", add.phone);
+                printf("Are you sure you want to change your Phone number[Y/N]? ");
                 scanf("%s", agree);
                 if (strcmp(agree, "Y") == 0)
                 {
-                    printf("Enter you new Phone : ");
-                    scanf("%lf", &update.phone);
-                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %lf %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, update.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                    printf("Enter you new Phone number: ");
+                    scanf("%s", &update.phone);
+                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, update.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                     system("cls");
                     printf("Changes saved!");
                 }
@@ -97,14 +96,14 @@ void edit(void)
                 }
                 else
                 {
-                    printf("This entry is invalid");
+                    printf("This entry is invalid\n");
                     goto retry;
                 }
             }
         }
 
         else
-            fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %lf %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+            fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
     }
     fclose(old);
     fclose(newrec);
