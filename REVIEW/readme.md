@@ -1,1 +1,1 @@
-This program is the one that we shall show for the presentation.
+This program is the one that we should show to ma'am.
