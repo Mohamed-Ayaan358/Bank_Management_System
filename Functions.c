@@ -89,9 +89,9 @@ hl:	printf("\nSet a password to access online banking services: ");
 	Sleep(4000);
 	printf("\t\t\t\t\t\t    Congrats !!!! Your account has been verified and succesfully created.\n");
 hj: printf("\nEnter the amount of money you'd like to deposit - (minimum initial amount is Rupees 1000) : ");
-	scanf("%lf", &s.balance);
-	fprintf(ptr, "%lf\n", s.balance);
-	if (s.balance < 1000)
+	scanf("%lf", &add.amt);
+	fprintf(ptr, "%lf\n", add.amt);
+	if (add.amt < 1000)
 	{
 		printf("\nPlease deposit an amount more than Rupees 1000 to keep this account active.\n");
 		goto hj;
@@ -112,7 +112,7 @@ hj: printf("\nEnter the amount of money you'd like to deposit - (minimum initial
 	strcpy(add.ifsc, s.ifsc_cd);
 	printf("\nIFSC Code: %s", add.ifsc);
 	fprintf(ptr, "%d\n", s.ifsc_cd);
-	printf("\nSavings Account Balance: %.2lf", s.balance);
+	printf("\nSavings Account Balance: %.2lf", add.amt);
 	printf("\nReady Credit: %.2lf", s.cred_bal);
 	fclose(ptr);
 	return 0;
@@ -252,7 +252,7 @@ hp:	printf("\nWould you like to return to the previous menu ? (y/n) ");
 int blnc_enq()
 {
 	system("cls");
-	printf("Savings account: Rupees %.2lf", s.balance);
+	printf("Savings account: Rupees %.2lf", add.amt);
 	if (s.cred_bal < 0)
 	{
 		printf("\nNo credit available. Renews next month"); //Add function for printing date of next month from today here
@@ -296,7 +296,7 @@ lh:	system("cls");
 			}
 			printf("\nEnter the amount to be transferred: ");
 			scanf_s("%lf", &s.to_amnt);
-			if (s.to_amnt > (s.balance - 1000))
+			if (s.to_amnt > (add.amt - 1000))
 			{
 				Sleep(3000);
 				printf("\nLow account balance. Transaction Failed.\n");
@@ -304,12 +304,12 @@ lh:	system("cls");
 			}
 			else
 			{
-				s.balance -= s.to_amnt;
+				add.amt -= s.to_amnt;
 				Sleep(3000);
 				center_orient();
 				printf("Transcation Complete.\n");
-				printf("\nBalance in Savings account: %.2lf\n", s.balance);
-				fprintf(ptr, "%lf\n", s.balance);
+				printf("\nBalance in Savings account: %.2lf\n", add.amt);
+				fprintf(ptr, "%lf\n", add.amt);
 				return 0;
 			}
 			break;
@@ -411,7 +411,7 @@ hk:	printf("\nEnter the beneficiary mobile number: ");
 		scanf("%s", s.upi_passch);
 		if (strcmp(s.upi_passch, add.upip) == 0)
 		{
-			if (s.to_amnt > (s.balance - 1000))
+			if (s.to_amnt > (add.amt - 1000))
 			{
 				Sleep(3000);
 				printf("\nLow account balance. Transaction Failed.\n");
@@ -419,12 +419,12 @@ hk:	printf("\nEnter the beneficiary mobile number: ");
 			}
 			else
 			{
-				s.balance -= s.to_amnt;
+				add.amt -= s.to_amnt;
 				Sleep(3000);
 				center_orient();
 				printf("Transcation Complete.\n");
-				printf("\nBalance in Savings account: %.2lf\n", s.balance);
-				fprintf(ptr, "%lf\n", s.balance);
+				printf("\nBalance in Savings account: %.2lf\n", add.amt);
+				fprintf(ptr, "%lf\n", add.amt);
 				return 0;
 			}
 		}

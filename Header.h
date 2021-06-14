@@ -24,7 +24,6 @@ struct var
 	int a, b;
 	int ch, len_su, count;
 	char usernm[100], pass_r[9];
-	double balance;
 	char pass[9], usrnam[100], ifsc_cd[12];
 	int ch_1, len_1, len_2, len_3, len_4, count_1, ifs_cd;
 	int ch_2;
