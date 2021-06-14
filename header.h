@@ -23,6 +23,7 @@ struct
 void new_acc();
 void view_list();
 void edit();
+void delete();
 
 struct var
 {
