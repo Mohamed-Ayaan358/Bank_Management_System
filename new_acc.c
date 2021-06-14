@@ -7,16 +7,13 @@
 int i, j;
 int menu_exit;
 void menu();
-int atm();
 void close();
-
 void fordelay(int j)
 {
     int i, k;
     for (i = 0; i < j; i++)
         k = i;
 }
-
 void new_acc()
 {
     int choice;
@@ -26,8 +23,8 @@ void new_acc()
     system("cls"); /*It clears out the cmd page*/
 
     printf("\t\t\t==== ADD RECORD  ====");
-    printf("\n\n\n Enter today's date(mm/dd/yyyy):");
-    scanf("%d/%d/%d", &add.deposit.month, &add.deposit.day, &add.deposit.year);
+    printf("\n\n\n Enter today's date(dd/mm/yyyy):");
+    scanf("%d/%d/%d", &add.deposit.day, &add.deposit.month, &add.deposit.year);
     printf("\n Enter the account number:");
     scanf("%d", &check.acc_no);
     printf("\n Enter a 4 digit pin:");
@@ -47,8 +44,8 @@ account_no:
 
     printf("\n Enter the name:");
     scanf("%s", add.name);
-    printf("\n Enter the date of birth(mm/dd/yyyy): ");
-    scanf("%d/%d/%d", &add.dob.month, &add.dob.day, &add.dob.year);
+    printf("\n Enter the date of birth(dd/mm/yyyy): ");
+    scanf("%d/%d/%d", &add.dob.day, &add.dob.month, &add.dob.year);
     system("cls");
     printf("\n Enter the IFSC code: ");
     scanf("%s", add.ifsc);

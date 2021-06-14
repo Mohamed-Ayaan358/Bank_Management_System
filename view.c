@@ -8,7 +8,6 @@
 int i, j;
 int menu_exit;
 void menu();
-int atm();
 void close();
 
 void view_list()

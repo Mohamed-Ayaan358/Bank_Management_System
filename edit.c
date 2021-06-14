@@ -7,16 +7,15 @@
 int i, j;
 int menu_exit;
 void menu();
-int atm();
 void close();
 
 void edit(void)
 {
     int choice, test = 0;
     char agree[10];
-    FILE *old, *newrec;
+    FILE *old, *editrec;
     old = fopen("record.dat", "r");
-    newrec = fopen("new.dat", "w");
+    editrec = fopen("edit.dat", "w");
 
     printf("\nEnter the account number of the customer whose critical information you want to change:");
     scanf("%d", &update.acc_no);
@@ -40,7 +39,7 @@ void edit(void)
                 {
                     printf("Enter you new Name : ");
                     scanf("%s", &update.name);
-                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, update.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                    fprintf(editrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, update.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                     system("cls");
                     printf("Changes saved!");
                 }
@@ -63,7 +62,7 @@ void edit(void)
                 {
                     printf("Enter you new Date_of_birth : ");
                     scanf("%d/%d/%d", &update.dob.day, &update.dob.month, &update.dob.year);
-                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, update.dob.day, update.dob.month, update.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                    fprintf(editrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, update.dob.day, update.dob.month, update.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                     system("cls");
                     printf("Changes saved!");
                 }
@@ -84,9 +83,9 @@ void edit(void)
                 scanf("%s", agree);
                 if (strcmp(agree, "Y") == 0)
                 {
-                    printf("Enter you new Phone number: ");
+                    printf("Enter you edit Phone number: ");
                     scanf("%s", &update.phone);
-                    fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, update.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                    fprintf(editrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, update.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                     system("cls");
                     printf("Changes saved!");
                 }
@@ -103,12 +102,12 @@ void edit(void)
         }
 
         else
-            fprintf(newrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+            fprintf(editrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
     }
     fclose(old);
-    fclose(newrec);
+    fclose(editrec);
     remove("record.dat");
-    rename("new.dat", "record.dat");
+    rename("edit.dat", "record.dat");
 
     if (test != 1)
     {
