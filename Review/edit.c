@@ -17,8 +17,8 @@ void edit(void)
     old = fopen("record.dat", "r");
     editrec = fopen("edit.dat", "w");
 
-    printf("\nEnter the account number of the customer whose critical information you want to change:");
-    scanf("%d", &update.acc_no);
+    printf("\nEnter the account number of the customer whose critical information you want to change:");//Enter pin
+    scanf("%d", &update.acc_no);//While loops to check 1.accnt number 2.pin ,use to steps to move the code back up and count to keep track of changes
     while (fscanf(old, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     {
         if (add.acc_no == update.acc_no)
