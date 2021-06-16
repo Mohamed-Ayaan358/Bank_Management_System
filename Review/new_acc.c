@@ -49,7 +49,7 @@ account_no:
     system("cls");
     printf("\n Enter the IFSC code: ");
     scanf("%s", add.ifsc);
-    printf("\n Enter the UPI handler:");
+    printf("\n Enter the UPI handler:"); //Manab is handling this
     scanf("%s", add.upih);
     printf("\n Enter the UPI password:");
     scanf("%s", add.upip);
