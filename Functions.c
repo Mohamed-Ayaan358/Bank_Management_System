@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "Header.h"     //Manab do note that you should change your upip back to your original variables as I am removing upip and upih from my structure
 #include<Windows.h>
 #include<stdio.h>
 
