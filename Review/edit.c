@@ -41,7 +41,7 @@ void edit(void)
                     scanf("%s", &update.name);
                     fprintf(editrec, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, update.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                     system("cls");
-                    printf("Changes saved!");
+                    printf("Changes saved!");//Put pin option here and keep error limit to 3
                 }
                 else if (strcmp(agree, "N") == 0)
                 {
