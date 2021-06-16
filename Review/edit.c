@@ -109,7 +109,7 @@ void edit(void)
     remove("record.dat");
     rename("edit.dat", "record.dat");
 
-    if (test != 1)
+    if (test != 1) //This part of the code is used to check if account number exists
     {
         system("cls");
         printf("\nRecord not found!!\a\a\a");
