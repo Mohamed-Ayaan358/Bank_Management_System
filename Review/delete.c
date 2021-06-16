@@ -15,8 +15,8 @@ void delete (void)
     int test = 0;
     old = fopen("record.dat", "r");
     newrec = fopen("del.dat", "w");
-    printf("Enter the account number of the customer you want to delete:");
-    scanf("%d", &rem.acc_no);
+    printf("Enter the account number of the customer you want to delete:");//Pin
+    scanf("%d", &rem.acc_no);//While loops to check account number and pin
     while (fscanf(old, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     {
         if (add.acc_no != rem.acc_no)
