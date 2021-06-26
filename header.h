@@ -1,3 +1,5 @@
+
+
 struct date
 {
     int month, day, year;
@@ -9,8 +11,6 @@ struct
     int acc_no;
     int pin;
     char ifsc[60];
-    char upih[30];
-    char upip[30];
     char acc_type[10];
     char phone[11];
     float amt;
@@ -18,37 +18,8 @@ struct
     struct date deposit;
     struct date withdraw;
 
-} add, update, check, rem, upi, transact; /*Allows you to refer to the struct using different access points*/
-
+} add, update, check, rem, transact; /*Allows you to refer to the struct using different access points*/
 void new_acc();
 void view_list();
 void edit();
-
-struct var
-{
-	int a, b;
-	int ch, len_su, count;
-	char usernm[100], pass_r[9];
-	double balance;
-	char cust_nm[100], ifsc_cd[12], pass[9], upi_pass[7], upi_hndlr[11], pan_no[11], adhar_no[13], usrnam[100];
-	int ch_1, len_1, len_2, len_3, len_4, count_1, accnt_no, ifs_cd;
-	int ch_2;
-	int count_2, ch_3;
-	char cha, ph_no[11], ph_new[11], upi_newp[7];
-	int ch_8;
-	double cred_bal;
-	int ch_4;
-	int ch_9;
-	int to_accntno, len_5, len_6, len_7, len_8;
-	char to_ifscd[12], to_custnm[100];
-	double to_amnt;
-	char to_upicustm[100], to_phno[11], upi_passch[7], chaa;
-	int to_upiacntno, len_9, count_3;
-	int ch_10;
-	int ch_5;
-	char usrnm_ch[100], pass_ch[9];
-	int count_4, len_10, count_5;
-	int ch_6, ch_7;
-}s;
-
-
+void delete ();

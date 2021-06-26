@@ -7,15 +7,7 @@
 int i, j;
 int menu_exit;
 void menu();
-int atm();
 void close();
-
-void fordelay(int j)
-{
-    int i, k;
-    for (i = 0; i < j; i++)
-        k = i;
-}
 
 void new_acc()
 {
@@ -26,20 +18,21 @@ void new_acc()
     system("cls"); /*It clears out the cmd page*/
 
     printf("\t\t\t==== ADD RECORD  ====");
-    printf("\n\n\n Enter today's date(mm/dd/yyyy):");
-    scanf("%d/%d/%d", &add.deposit.month, &add.deposit.day, &add.deposit.year);
+    printf("\n\n\n Enter today's date(dd/mm/yyyy):");
+    scanf("%d/%d/%d", &add.deposit.day, &add.deposit.month, &add.deposit.year);
+account_no:
     printf("\n Enter the account number:");
     scanf("%d", &check.acc_no);
     printf("\n Enter a 4 digit pin:");
     scanf("%d", &add.pin);
-account_no:
-    while (fscanf(ptr, "%d %s %d/%d/%d  %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
+
+    while (fscanf(ptr, "%d %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     /*fscanf is used to read data from a particular file in this case ptr*/
     {
         if (check.acc_no == add.acc_no)
         {
-            printf("Account no. already in use!");
-            fordelay(1000000000);
+            printf("Account number already in use!");
+            Sleep(3000);
             goto account_no; /*Allows for jump to account_No if number does not exist*/
         }
     }
@@ -47,16 +40,11 @@ account_no:
 
     printf("\n Enter the name:");
     scanf("%s", add.name);
-    printf("\n Enter the date of birth(mm/dd/yyyy): ");
-    scanf("%d/%d/%d", &add.dob.month, &add.dob.day, &add.dob.year);
+    printf("\n Enter the date of birth(dd/mm/yyyy): ");
+    scanf("%d/%d/%d", &add.dob.day, &add.dob.month, &add.dob.year);
     system("cls");
     printf("\n Enter the IFSC code: ");
     scanf("%s", add.ifsc);
-    printf("\n Enter the UPI handler:");
-    scanf("%s", add.upih);
-    printf("\n Enter the UPI password:");
-    scanf("%s", add.upip);
-    system("cls");
     printf("\n Enter the phone number: ");
     scanf("%s", &add.phone);
     printf("\n Enter the amount to deposit: ");
@@ -64,7 +52,7 @@ account_no:
     printf("\nType of account:\n\t#Saving\n\t#Current\n\t#Fixed1(for 1 year)\n\t#Fixed2(for 2 years)\n\t#Fixed3(for 3 years)\n\n\tEnter your choice:");
     scanf("%s", add.acc_type);
 
-    fprintf(ptr, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.upih, add.upip, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+    fprintf(ptr, "%d %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
 
     fclose(ptr);
     printf("\nAccount created successfully");
