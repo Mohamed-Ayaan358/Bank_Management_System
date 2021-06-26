@@ -120,8 +120,7 @@ int sign_up()
 	}
 	else
 	{
-		center_orient();
-		printf("Account doesnt exist. Please create an account with the bank first.\n");
+		printf("\n\t\t\t\t\t\t  Account doesnt exist. Please create an account with the bank first.\n");
 		system("pause");
 		exit(0);
 	}
