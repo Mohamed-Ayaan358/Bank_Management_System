@@ -23,8 +23,6 @@ void new_acc()
 account_no:
     printf("\n Enter the account number:");
     scanf("%d", &check.acc_no);
-    printf("\n Enter a 4 digit pin:");
-    scanf("%d", &add.pin);
 
     while (fscanf(ptr, "%d %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     /*fscanf is used to read data from a particular file in this case ptr*/
@@ -37,7 +35,8 @@ account_no:
         }
     }
     add.acc_no = check.acc_no;
-
+    printf("\n Enter a 4 digit pin:");
+    scanf("%d", &add.pin);
     printf("\n Enter the name:");
     scanf("%s", add.name);
     printf("\n Enter the date of birth(dd/mm/yyyy): ");
