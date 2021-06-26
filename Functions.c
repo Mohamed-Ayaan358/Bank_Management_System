@@ -1,8 +1,9 @@
-#include "Header.h"     //Manab do note that you should change your upip back to your original variables as I am removing upip and upih from my structure
+#include "Header.h"
 #include<Windows.h>
 #include<stdio.h>
 
-FILE *ptr;
+FILE *f;
+FILE* ptr;
 
 void center_orient()
 {
@@ -67,59 +68,68 @@ lb:	system("CLS");
 
 int sign_up()
 {
+	s.count_10 = 0;
+	f = fopen("online_rec.dat", "ab+");
 	ptr = fopen("record.dat", "ab+");
 	s.count_2 = 0;
 	system("cls");
-	s.cred_bal = 100000;
 	center_orient();
 	printf("\b\bWelcome to ANONYMOUS BANKING SYSTEMS\n");
 	printf("\nEnter your name: ");
-	scanf("%s",&add.name);
-	fprintf(ptr, "%s\n", add.name);
-hl:	printf("\nSet a password to access online banking services: ");
-	scanf("%s", &s.pass_r);
-	fprintf(ptr, "%s\n", s.pass_r);
-	s.len_4 = strlen(s.pass_r);
-	if (s.len_4 > 8)
+	scanf("%s",&s.name);
+	while (fscanf(ptr, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
 	{
-		printf("\nThe password can be only 8 characteds long\n");
-		goto hl;
+		if (strcmp(s.name, add.name) == 0)
+		{
+			s.count_10++;
+		}
 	}
-	printf("\nVerifying account details ....\n\n");
-	Sleep(4000);
-	printf("\t\t\t\t\t\t    Congrats !!!! Your account has been verified and succesfully created.\n");
-hj: printf("\nEnter the amount of money you'd like to deposit - (minimum initial amount is Rupees 1000) : ");
-	scanf("%lf", &add.amt);
-	fprintf(ptr, "%lf\n", add.amt);
-	if (add.amt < 1000)
+	if (s.count_10 > 0)
 	{
-		printf("\nPlease deposit an amount more than Rupees 1000 to keep this account active.\n");
-		goto hj;
+
+	hl:	printf("\nSet a password to access online banking services: ");
+		scanf("%s", &s.pass_r);
+		fprintf(f, "%s\n", s.pass_r);
+		s.len_4 = strlen(s.pass_r);
+		if (s.len_4 > 8)
+		{
+			printf("\nThe password can be only 8 characteds long\n");
+			goto hl;
+		}
+		printf("\nVerifying account details ....\n\n");
+		Sleep(4000);
+		printf("\t\t\t\t\t\t    Congrats !!!! Your account has been verified and succesfully created.\n");
+		Sleep(3000);
+		system("cls");
+		printf("\nAccount created !! Below are the details of your account.\n");
+		strcat(s.usrnam, "ANYM");
+		strcat(s.usrnam, add.name);
+		printf("\nUsername: %s", s.usrnam);
+		fprintf(f, "%s\n", s.usrnam);
+		printf("\nAccount Number: %ld", add.acc_no);
+		fprintf(f, "%ld\n", add.acc_no);
+		strcpy(add.ifsc, "ANYM");
+		strcpy(add.ifsc, s.ifsc_cd);
+		printf("\nIFSC Code: %s", add.ifsc);
+		fprintf(f, "%d\n", s.ifsc_cd);
+		printf("\nSavings Account Balance: %.2lf", add.amt);
+		printf("\nReady Credit: %.2lf", s.cred_bal);
+		fclose(ptr);
+		fclose(f);
+		return 0;
 	}
-	system("cls");
-	Sleep(3000);
-	printf("\nAccount created !! Below are the details of your account.\n");
-	strcat(s.usrnam, "ANYM");
-	strcat(s.usrnam, add.name);
-	printf("\nUsername: %s", s.usrnam);
-	fprintf(ptr, "%s\n", s.usrnam);
-	add.acc_no = (rand()% (8999999998)) + 1000000000;
-	printf("\nAccount Number: %ld", add.acc_no);
-	fprintf(ptr, "%ld\n", add.acc_no);
-	strcpy(add.ifsc, "ANYM");
-	s.ifs_cd = (rand() % (8999998)) + 1000000;
-	//strcpy(s.ifsc_cd, s.ifs_cd); The integer isnt being converted to string, tried itoa(), and explicit type casting, fix if possible
-	strcpy(add.ifsc, s.ifsc_cd);
-	printf("\nIFSC Code: %s", add.ifsc);
-	fprintf(ptr, "%d\n", s.ifsc_cd);
-	printf("\nSavings Account Balance: %.2lf", add.amt);
-	printf("\nReady Credit: %.2lf", s.cred_bal);
-	fclose(ptr);
-	return 0;
+	else
+	{
+		center_orient();
+		printf("Account doesnt exist. Please create an account with the bank first.\n");
+		system("pause");
+		exit(0);
+	}
 }
 
 int UPI()
 {
+	f = fopen("online_rec.dat", "ab+");
 	ptr = fopen("record.dat", "ab+");
 	if (s.count_2 == 0)
 	{
@@ -130,20 +140,18 @@ int UPI()
 		if (s.cha == 'y' || s.cha == 'Y')
 		{
 			system("cls");
-			printf("\nEnter your 10 digit mobile number: ");
-			scanf("%s", &add.phone);
-			fprintf(ptr, "%s", add.phone);
 			strcpy(add.upih, "ANYM@");
 			printf("\nUPI Handler : %s%s\n", add.upih, add.phone);
 		jk:	printf("\nEnter a UPI password to secure your transactions: ");
 			scanf("%s", &add.upip);
-			fprintf(ptr, "%s\n", add.upip);
 			s.len_3 = strlen(add.upip);
 			if (s.len_3 != 6) //Add condition for- checking special characters in password
 			{
 				printf("\nMaximum length of password 6 characters\n");
 				goto jk;
 			}
+			fprintf(f, "%s\n", add.upip);
+			fprintf(ptr, "%s\n", add.upip); //Add while loop from bank code
 			Sleep(3000);
 			center_orient();
 			printf("Your UPI Account has been created succesfully !\n");
@@ -165,26 +173,11 @@ int UPI()
 	{
 		system("cls");
 		printf("\nUPI Handler : %s%s\n", add.upih, add.phone);
-	lb:	printf("\nChoose from the following options:\n1.Change Phone Number\n2.Change Password\n3.Return to main menu\n");
+	lb:	printf("\nChoose from the following options:\n1.Change Password\n2.Return to main menu\n");
 		scanf("%d", &s.ch_3);
 		switch (s.ch_3)
 		{
 		case 1:
-			system("cls");
-			printf("Enter your previous phone number: ");
-			scanf("%s", &s.ph_new);
-			if (strcmp(s.ph_new, add.phone) == 0)
-			{
-				printf("\nEnter your new phone number: ");
-				scanf("%s", &add.phone);
-				fprintf(ptr, "%s\n", add.phone);
-				Sleep(2000);
-				center_orient();
-				printf("Your phone number has been updates succefully !\n");
-			}
-			break;
-
-		case 2:
 			system("cls");
 			s.count = 0;
 		hk:	printf("Enter your previous password: ");
@@ -193,7 +186,8 @@ int UPI()
 			{
 				printf("\nEnter your new password: ");
 				scanf("%s", &add.upip);
-				fprintf(ptr, "%s\n", add.upip);
+				fprintf(f, "%s\n", add.upip);
+				fprintf(ptr, "%s\n", add.upip); //Add while loop from bank code
 				Sleep(3000);
 				center_orient();
 				printf("Your password has been updated sucessfully !\n");
@@ -219,7 +213,7 @@ int UPI()
 			}
 			break;
 
-		case 3:
+		case 2:
 			dashboard();
 			return 0;
 			break;
@@ -246,11 +240,14 @@ hp:	printf("\nWould you like to return to the previous menu ? (y/n) ");
 		printf("\nEnter a valid option.\n");
 		goto hp;
 	}
+	fclose(f);
 	fclose(ptr);
 }
 
 int blnc_enq()
 {
+	f = fopen("online_rec.dat", "ab+");
+	ptr = fopen("record.dat", "ab+");
 	system("cls");
 	printf("Savings account: Rupees %.2lf", add.amt);
 	if (s.cred_bal < 0)
@@ -262,10 +259,13 @@ int blnc_enq()
 		printf("\nReady credit: Rupees %.2lf\n", s.cred_bal);
 	}
 	return 0;
+	fclose(f);
+	fclose(ptr);
 }
 
 int NEFT_trans()
 {
+	f = fopen("online_rec.dat", "ab+");
 	ptr = fopen("record.dat", "ab+");
 lh:	system("cls");
 	printf("Choose from which account would you like to perform a NEFT transaction:\n1.Savings Account\n2.Current Account\n");
@@ -276,8 +276,10 @@ lh:	system("cls");
 			system("cls");
 			printf("Enter the name of the beneficiary: ");
 			scanf("%s", &s.to_custnm);
+			fprintf(f, "%s\n", s.to_custnm);
 		hj:	printf("\nEnter the beneficiary account number: ");
 			scanf("%d", &s.to_accntno);
+			fprintf(f, "%s\n", s.to_accntno);
 			/*
 			s.len_5 = strlen((char)s.to_accntno);
 			if (s.len_5 < 10)
@@ -294,6 +296,7 @@ lh:	system("cls");
 				printf("\nEnter a valid IFSC code.\n");
 				goto hk;
 			}
+			fprintf(f, "%s\n", s.to_ifscd);
 			printf("\nEnter the amount to be transferred: ");
 			scanf_s("%lf", &s.to_amnt);
 			if (s.to_amnt > (add.amt - 1000))
@@ -309,7 +312,8 @@ lh:	system("cls");
 				center_orient();
 				printf("Transcation Complete.\n");
 				printf("\nBalance in Savings account: %.2lf\n", add.amt);
-				fprintf(ptr, "%lf\n", add.amt);
+				fprintf(f, "%lf\n", add.amt);
+				fprintf(ptr, "%lf\n", add.amt); // Add while loop from bank code
 				return 0;
 			}
 			break;
@@ -318,8 +322,10 @@ lh:	system("cls");
 			system("cls");
 			printf("Enter the name of the beneficiary: ");
 			scanf("%s", &s.to_custnm);
+			fprintf(f, "%s\n", s.to_custnm);
 		hl:	printf("\nEnter the beneficiary account number: ");
 			scanf("%ld", &s.to_accntno);
+			fprintf(f, "%s\n", s.to_accntno);
 			/*
 			s.len_7 = strlen((char)s.to_accntno);
 			if (s.len_7 < 10)
@@ -336,6 +342,7 @@ lh:	system("cls");
 				printf("\nEnter a valid IFSC code.\n");
 				goto hp;
 			}
+			fprintf(f, "%s\n", s.to_ifscd);
 			printf("\nEnter the amount to be transferred: ");
 			scanf_s("%lf", &s.to_amnt);
 			if (s.to_amnt > (s.cred_bal - 1000))
@@ -351,6 +358,8 @@ lh:	system("cls");
 				center_orient();
 				printf("Transcation Complete.\n");
 				printf("\nBalance in Current account: %.2lf\n", s.cred_bal);
+				fprintf(f, "%lf\n", s.cred_bal);
+				fprintf(ptr, "%lf\n", s.cred_bal); // Add while loop from bank code and create variable for credit balance in header file
 				return 0;
 			}
 			break;
@@ -376,11 +385,13 @@ lb:	printf("\nWould you like to return to the previous menu ? (y/n) ");
 		printf("\nEnter a valid option.\n");
 		goto lb;
 	}
+	fclose(f);
 	fclose(ptr);
 }
 
 int UPI_trans()
 {
+	f = fopen("online_rec.dat", "ab+");
 	ptr = fopen("record.dat", "ab+");
 	system("cls");
 	/*
@@ -409,35 +420,40 @@ hk:	printf("\nEnter the beneficiary mobile number: ");
 		scanf_s("%lf", &s.to_amnt);
 		printf("\nEnter your UPI password: ");
 		scanf("%s", s.upi_passch);
-		if (strcmp(s.upi_passch, add.upip) == 0)
+		while (fscanf(ptr, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
 		{
-			if (s.to_amnt > (add.amt - 1000))
+
+			if (strcmp(s.upi_passch, add.upip) == 0)
 			{
-				Sleep(3000);
-				printf("\nLow account balance. Transaction Failed.\n");
-				return 0;
+				if (s.to_amnt > (add.amt - 1000))
+				{
+					Sleep(3000);
+					printf("\nLow account balance. Transaction Failed.\n");
+					return 0;
+				}
+				else
+				{
+					add.amt -= s.to_amnt;
+					Sleep(3000);
+					center_orient();
+					printf("Transcation Complete.\n");
+					printf("\nBalance in Savings account: %.2lf\n", add.amt);
+					fprintf(f, "%lf\n", add.amt);
+					fprintf(ptr, "%lf\n", add.amt); // Add while loop from bank code
+					return 0;
+				}
 			}
 			else
 			{
-				add.amt -= s.to_amnt;
-				Sleep(3000);
-				center_orient();
-				printf("Transcation Complete.\n");
-				printf("\nBalance in Savings account: %.2lf\n", add.amt);
-				fprintf(ptr, "%lf\n", add.amt);
-				return 0;
-			}
-		}
-		else
-		{
-			s.count_3++;
-			printf("\nWrong UPI Password.\n");
-			if (s.count_3 > 3)
-			{
-				printf("\nYou have exceeded the number of tries. You are being logged out.\n");
-				login();
-			}
+				s.count_3++;
+				printf("\nWrong UPI Password.\n");
+				if (s.count_3 > 3)
+				{
+					printf("\nYou have exceeded the number of tries. You are being logged out.\n");
+					login();
+				}
 
+			}
 		}
 	}
 	else
@@ -460,16 +476,22 @@ hk:	printf("\nEnter the beneficiary mobile number: ");
 		}
 
 	}
+	fclose(f);
 	fclose(ptr);
 }
 
 int account_detls()
 {
 	system("cls");
-hk:	printf("Account Owner : %s", add.name);
-	printf("\nMobile Number : %s", add.phone);
-	printf("\nUPI Handler : %s%s", add.upih, add.phone);
-	printf("\nTo view UPI Settings, navigate to the UPI section from the dashboard.\n");
+	f = fopen("online_rec.dat", "ab+");
+	ptr = fopen("record.dat", "ab+");
+	while (fscanf(ptr, "%d %s %d/%d/%d %s %s %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.upih, &add.upip, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
+	{
+	hk:	printf("Account Owner : %s", add.name);
+		printf("\nMobile Number : %s", add.phone);
+		printf("\nUPI Handler : %s%s", add.upih, add.phone);
+		printf("\nTo view UPI Settings, navigate to the UPI section from the dashboard.\n");
+	}
 	printf("\nChoose from the following options :\n1.Change Username\n2.Change password\n3.Return to the main menu\n");
 	scanf("%d", &s.ch_5);
 	switch (s.ch_5)
@@ -482,7 +504,7 @@ hk:	printf("Account Owner : %s", add.name);
 			{
 				printf("\nEnter a new username : ");
 				scanf("%s", &s.usrnam);
-				fprintf(ptr, "%s\n", s.usrnam);
+				fprintf(f, "%s\n", s.usrnam);
 				Sleep(3000);
 				center_orient();
 				printf("Username updated !\n");
@@ -506,7 +528,7 @@ hk:	printf("Account Owner : %s", add.name);
 			{
 			lb:	printf("\nEnter a new password : ");
 				scanf("%s", &s.pass_r);
-				fprintf(ptr, "%s\n", s.pass_r);
+				fprintf(f, "%s\n", s.pass_r);
 				s.len_10 = strlen(s.pass_r);
 				if (s.len_10 > 8 || s.len_10 < 1)
 				{
@@ -558,6 +580,7 @@ hl:	printf("\nWould you like to return to the previous menu ? (y/n) ");
 		printf("\nEnter a valid option.\n");
 		goto hl;
 	}
+	fclose(f);
 	fclose(ptr);
 	return 0;
 }
