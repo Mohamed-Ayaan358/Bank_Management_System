@@ -50,11 +50,23 @@ ret:
         break;
         /*
     case 3:
-        transact(); //Function to complete transactions
-        break;
-    case 4:
-        see(); //Function to view a particular account
+        transact(); //Function to view all transactions transactions
         break;*/
+
+    case 4:
+        printf("Enter the password: ");
+        scanf("%s", check);
+        if (strcmp(check, password) == 0)
+        {
+            see();
+        }
+        else
+        {
+            printf("That was incorrect "); //Function to view a list of accounts
+            goto ret;
+        }
+        break; //Function to view a particular account
+
     case 5:
         printf("Enter the password: ");
         scanf("%s", check);

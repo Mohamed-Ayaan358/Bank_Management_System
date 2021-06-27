@@ -1,5 +1,5 @@
-a.exe: new_acc.o main.o view.o edit.o delete.o
-	gcc new_acc.o main.o view.o edit.o delete.o
+a.exe: new_acc.o main.o view.o edit.o delete.o see.o
+	gcc new_acc.o main.o view.o edit.o delete.o see.o
 
 main.o: main.c header.h
 	gcc -c main.c
@@ -16,3 +16,5 @@ edit.o: edit.c header.h
 delete.o:delete.c header.h
 	gcc -c delete.c
 
+see.o :see.c header.h
+	gcc -c see.c
