@@ -8,7 +8,7 @@ struct
 {
 
     char name[60];
-    int acc_no;
+    long int acc_no;
     int pin;
     char ifsc[60];
     char acc_type[10];
