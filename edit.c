@@ -133,7 +133,7 @@ void edit(void)
     remove("record.dat");
     rename("edit.dat", "record.dat");
 
-    if (test != 1)
+    if (test != 1) //Used to say accnt does not even exist
     {
         system("cls");
         printf("\nThis account does not exist \a\a\a");

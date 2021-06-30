@@ -29,7 +29,7 @@ void see(void)
             {
                 test = 1;
                 //printf("%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
-                printf("Account number : %lld\n", add.acc_no);
+                printf("Account number : %ld\n", update.acc_no);
                 printf("Name of account holder : %s\n", add.name);
                 printf("Date of birth of account holder : %d/%d/%d\n", add.dob.day, add.dob.month, add.dob.year);
                 printf("IFSC of account holder : %s\n", add.ifsc);
