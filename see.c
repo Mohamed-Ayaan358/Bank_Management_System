@@ -16,7 +16,7 @@ void see(void)
     char agree[10];
     FILE *old;
     old = fopen("record.dat", "r");
-    printf("\nEnter the account number of the customer whose critical information you want to change:");
+    printf("\nEnter the account number of the customer whose details you wish to change:");
     scanf("%ld", &update.acc_no);
     while (fscanf(old, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
     {

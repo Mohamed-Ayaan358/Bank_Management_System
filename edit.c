@@ -31,19 +31,19 @@ void edit(void)
             {
                 test = 1;
             redo:
-                printf("\nWhich information do you want to change?\n[1] Name\n[2] Date_of_birth\n[3] Phone\n\n");
+                printf("\nWhich information do you want to change?\n[1] Name\n[2] Date_of_birth\n[3] Phone\n[4] Pin\n\n");
                 printf("Enter choice:");
                 scanf("%d", &choice);
 
                 if (choice == 1)
                 {
                     printf("Your current Name is : %s\n", add.name);
-                retry:
+                retryn:
                     printf("Are you sure you want to change your Name[Y/N]? ");
                     scanf("%s", agree);
                     if (strcmp(agree, "Y") == 0 || strcmp(agree, "y") == 0)
                     {
-                        printf("Enter you new Name : ");
+                        printf("Enter your new Name : ");
                         scanf("%s", &update.name);
                         fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, update.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                         system("cls");
@@ -56,17 +56,18 @@ void edit(void)
                     else
                     {
                         printf("This entry is invalid\n");
-                        goto retry;
+                        goto retryn;
                     }
                 }
                 else if (choice == 2)
                 {
                     printf("Your current Date_of_birth : %d/%d/%d \n", add.dob.day, add.dob.month, add.dob.year);
+                retrydob:
                     printf("Are you sure you want to change your Date_of_birth[Y/N]? ");
                     scanf("%s", agree);
                     if (strcmp(agree, "Y") == 0 || strcmp(agree, "y") == 0)
                     {
-                        printf("Enter you new Date_of_birth : ");
+                        printf("Enter your new Date_of_birth : ");
                         scanf("%d/%d/%d", &update.dob.day, &update.dob.month, &update.dob.year);
                         fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, update.dob.day, update.dob.month, update.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                         system("cls");
@@ -79,17 +80,18 @@ void edit(void)
                     else
                     {
                         printf("This entry is invalid\n");
-                        goto retry;
+                        goto retrydob;
                     }
                 }
                 else if (choice == 3)
                 {
                     printf("Your current Phone number: %s\n", add.phone);
+                retryphone:
                     printf("Are you sure you want to change your Phone number[Y/N]? ");
                     scanf("%s", agree);
                     if (strcmp(agree, "Y") == 0 || strcmp(agree, "y") == 0)
                     {
-                        printf("Enter you edit Phone number: ");
+                        printf("Enter you new Phone number: ");
                         scanf("%s", &update.phone);
                         fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, update.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                         system("cls");
@@ -102,7 +104,31 @@ void edit(void)
                     else
                     {
                         printf("This entry is invalid\n");
-                        goto retry;
+                        goto retryphone;
+                    }
+                }
+                else if (choice == 4)
+                {
+                    printf("Your current Phone number: %d\n", add.pin);
+                retrypin:
+                    printf("Are you sure you want to change your Pin[Y/N]? ");
+                    scanf("%s", agree);
+                    if (strcmp(agree, "Y") == 0 || strcmp(agree, "y") == 0)
+                    {
+                        printf("Enter your new Pin  ");
+                        scanf("%d", &update.pin);
+                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, update.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                        system("cls");
+                        printf("Changes saved!");
+                    }
+                    else if (strcmp(agree, "N") == 0 || strcmp(agree, "n") == 0)
+                    {
+                        goto redo;
+                    }
+                    else
+                    {
+                        printf("This entry is invalid\n");
+                        goto retrypin;
                     }
                 }
             }

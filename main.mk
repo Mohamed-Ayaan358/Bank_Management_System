@@ -1,8 +1,8 @@
-a.exe: new_acc.o main.o view.o edit.o delete.o see.o
-	gcc new_acc.o main.o view.o edit.o delete.o see.o
+a.exe: new_acc.o main1.o view.o edit.o delete.o see.o
+	gcc new_acc.o main1.o view.o edit.o delete.o see.o
 
-main.o: main.c header.h
-	gcc -c main.c
+main1.o: main1.c header.h
+	gcc -c main1.c
 	
 new_acc.o: new_acc.c header.h
 	gcc -c new_acc.c
