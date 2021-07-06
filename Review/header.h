@@ -8,11 +8,9 @@ struct
 {
 
     char name[60];
-    int acc_no;
+    long int acc_no;
     int pin;
     char ifsc[60];
-    char upip[30];
-    char upih[30];
     char acc_type[10];
     char phone[11];
     float amt;
@@ -25,3 +23,4 @@ void new_acc();
 void view_list();
 void edit();
 void delete ();
+void see();
