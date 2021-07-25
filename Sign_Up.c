@@ -66,6 +66,7 @@ int sign_up()
     system("pause");
     // display(&usernam[0]); Display function not being called, fix it
     fprintf(f, "%s %s %s %s %.2f %.2f %s %s\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n", usernam, pass, accnt_no, ifsc_cd, amnt, credit, upih, upip);
+    count_lines++;
     fclose(ptr);
     fclose(f);
     return 0;

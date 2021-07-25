@@ -35,7 +35,14 @@ lb: system("CLS");
 		{
 			char* p;
 			p = login();
-			dashboard(p);
+			if (p != 0)
+			{
+				dashboard(p);
+			}
+			else
+			{
+				return 0;
+			}
 			printf("\n\nThank You for using our systems\n\n");
 			return 0; // Return to main menu
 		}

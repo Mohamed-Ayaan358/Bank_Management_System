@@ -42,7 +42,7 @@ char *login()
             count++;
         }
     }
-    if (count >= 3)
+    if (count >= count_lines)
     {
         printf("\nUser does not exist\n");
         return 0;
