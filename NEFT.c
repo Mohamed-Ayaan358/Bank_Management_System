@@ -109,7 +109,7 @@ int NEFT(char *x)
                 break;
 
             default:
-                printf("\Please enter a valid option\n");
+                printf("\nPlease enter a valid option\n");
                 goto hj;
             }
             break;
