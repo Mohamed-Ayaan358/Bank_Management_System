@@ -76,7 +76,7 @@ account_no:
     {
         strcpy(add.acc_type, "Fixed3");
     }
-    fprintf(ptr, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+    fprintf(ptr, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
 
     fclose(ptr);
     printf("\nAccount created successfully");

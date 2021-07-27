@@ -45,7 +45,7 @@ void edit(void)
                     {
                         printf("Enter your new Name : ");
                         scanf("%s", &update.name);
-                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, update.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n", add.acc_no, update.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                         system("cls");
                         printf("Changes saved!");
                     }
@@ -69,7 +69,7 @@ void edit(void)
                     {
                         printf("Enter your new Date_of_birth : ");
                         scanf("%d/%d/%d", &update.dob.day, &update.dob.month, &update.dob.year);
-                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, update.dob.day, update.dob.month, update.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n", add.acc_no, add.name, update.dob.day, update.dob.month, update.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                         system("cls");
                         printf("Changes saved!");
                     }
@@ -93,7 +93,7 @@ void edit(void)
                     {
                         printf("Enter you new Phone number: ");
                         scanf("%s", &update.phone);
-                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, update.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, update.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                         system("cls");
                         printf("Changes saved!");
                     }
@@ -117,7 +117,7 @@ void edit(void)
                     {
                         printf("Enter your new Pin  ");
                         scanf("%d", &update.pin);
-                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, update.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+                        fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, update.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
                         system("cls");
                         printf("Changes saved!");
                     }
@@ -152,7 +152,7 @@ void edit(void)
         }
 
         else
-            fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
+            fprintf(editrec, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, add.amt, add.deposit.day, add.deposit.month, add.deposit.year);
     }
     fclose(old);
     fclose(editrec);
