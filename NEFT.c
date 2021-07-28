@@ -12,10 +12,10 @@ int NEFT(char *x)
     FILE* f3;
     FILE *f4;
     ptr = fopen("record.dat", "a+");
-    int count, count_2, count_3, len, cha, len_1, d, h1;
-    count = count_2 = count_3 = len = cha = d = 0;
-    char ch, name[100], usernam[110], pass[9], accnt_no[11], ifsc_cd[12], phone_1[11], upih[16], upip[9], new_upih[16], new_upip[9], upih_2[16], upip_2[9];
-    char to_name[100], to_accnt_no[11], to_ifsc_cd[12];
+    int count, count_2, count_3, count_4, len, cha, len_1, d, h1, d2;
+    count = count_2 = count_3 = count_4 = len = cha = d = d2 = 0;
+    char ch, name[100], usernam[110], pass[9], accnt_no[11], ifsc_cd[14], phone_1[11], upih[16], upip[9], new_upih[16], new_upip[9], upih_2[16], upip_2[9], temp_accno[12], temp_accno2[12];
+    char to_name[100], to_accnt_no[11], to_ifsc_cd[14];
     float amnt, amnt_2, credit, upi_amnt, new_amnt, new_credit;
     amnt = amnt_2 = credit = upi_amnt = new_amnt = new_credit = 0.000000;
     credit = 100000;
@@ -32,6 +32,7 @@ int NEFT(char *x)
             len_1 = strlen(x);
         }
     }
+    fclose(ptr);
     f = fopen("online_rec.dat", "a+");
     system("CLS");
     while (fscanf(f, "%s %s %s %s %f %f %s %s\n", &usernam, &pass, &accnt_no, &ifsc_cd, &amnt, &credit, &upih, &upip) != EOF)
@@ -46,25 +47,42 @@ int NEFT(char *x)
             amnt_2 = amnt;
             new_amnt = amnt;
             new_credit = credit;
-        hj: printf("\nChoose the account from which the transaction has to be made:\n1.Savings\n2.Credit\n");
+        hj: printf("\n");
+            pprint(" ");
+            printf("\b\b\b\b\b\bChoose the account from which the transaction has to be made:\n");
+            printf("\n");
+            pprint(" ");
+            printf("\b\b\b\b[1] Savings\n");
+            pprint(" ");
+            printf("\b\b\b\b[2] Current\n");
             scanf("%d", &cha);
             switch (cha)
             {
             case 1:
                 f3 = fopen("Transaction.dat", "a+");
                 system("CLS");
-                printf("\nEnter the name of the benificiary: ");
+                printf("\n\n");
+                pprint(" ");
+                printf("\b\b\b\b\b\bEnter the name of the benificiary: ");
                 scanf("%s", &to_name);
-                printf("\nEnter the account number of the benificiary: ");
+                printf("\n");
+                pprint(" ");
+                printf("\b\b\b\b\b\bEnter the account number of the benificiary: ");
                 scanf("%s", &to_accnt_no);
-                printf("\nEnter the IFSC code of the benificiary: ");
+                printf("\n");
+                pprint(" ");
+                printf("\b\b\b\b\b\bEnter the IFSC code of the benificiary: ");
                 scanf("%s", &to_ifsc_cd);
-                printf("\nEnter the amount to be transferred: ");
+                printf("\n");
+                pprint(" ");
+                printf("\b\b\b\b\b\bEnter the amount to be transferred: ");
                 scanf("%f", &to_amnt);
                 if (to_amnt >= (amnt - 1000))
                 {
                     Sleep(3000);
-                    printf("\nLow account balance. Transaction failed.\n");
+                    printf("\n");
+                    pprint(" ");
+                    printf("\b\b\b\b\b\bLow account balance. Transaction failed.\n");
                     break;
                 }
                 else
@@ -72,28 +90,67 @@ int NEFT(char *x)
                     amnt -= to_amnt;
                     new_amnt = amnt;
                     Sleep(3000);
-                    printf("\nTransaction complete.\n");
-                    printf("\nRemaining balance (Savings Account): Rupees %.2f", amnt);
+                    printf("\n");
+                    pprint(" ");
+                    printf("\b\b\b\b\b\bTransaction complete.\n");
+                    printf("\n");
+                    pprint(" ");
+                    printf("\b\b\b\b\b\bRemaining balance (Savings Account): Rupees %.2f", amnt);
                     fprintf(f3, "%s %s %s %s %.2f %.2f\n", usernam, to_name, to_accnt_no, to_ifsc_cd, -to_amnt, amnt);
                     fclose(f3);
+                    ptr = fopen("record.dat", "r+");
+                    while (fgets(temp_accno2, 11, ptr) != EOF)
+                    {
+                        if (strcmp(accnt_no, temp_accno2) == 0)
+                        {
+                            d2 = ftell(ptr);
+                            break;
+                        }
+                    }
+                    fseek(ptr, 0, SEEK_SET);
+                    while (fscanf(ptr, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
+                    {
+                        char a[100];
+                        sprintf(a, "%ld", add.acc_no);
+                        if (strcmp(accnt_no, a) == 0)
+                        {
+                            int h2 = strlen(a);
+                            fseek(ptr, d2, SEEK_SET);
+                            fseek(ptr, -h2, SEEK_CUR);
+                            fprintf(ptr, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, new_amnt, add.deposit.day, add.deposit.month, add.deposit.year);
+                            fseek(ptr, 0, SEEK_CUR);
+                            break;
+                        }
+                    }
+                    fclose(ptr);
                 }
                 break;
 
             case 2:
                 f3 = fopen("Transaction.dat", "a+");
                 system("CLS");
-                printf("\nEnter the name of the benificiary: ");
+                printf("\n\n");
+                pprint(" ");
+                printf("\b\b\b\b\b\bEnter the name of the benificiary: ");
                 scanf("%s", &to_name);
-                printf("\nEnter the account number of the benificiary: ");
+                printf("\n");
+                pprint(" ");
+                printf("\b\b\b\b\b\bEnter the account number of the benificiary: ");
                 scanf("%s", &to_accnt_no);
-                printf("\nEnter the IFSC code of the benificiary: ");
+                printf("\n");
+                pprint(" ");
+                printf("\b\b\b\b\b\bEnter the IFSC code of the benificiary: ");
                 scanf("%s", &to_ifsc_cd);
-                printf("\nEnter the amount to be transferred: ");
+                printf("\n");
+                pprint(" ");
+                printf("\b\b\b\b\b\bEnter the amount to be transferred: ");
                 scanf("%f", &to_amnt);
                 if (to_amnt >= (credit - 1000))
                 {
                     Sleep(3000);
-                    printf("\nLow account balance. Transaction failed.\n");
+                    printf("\n");
+                    pprint(" ");
+                    printf("\b\b\b\b\b\bLow account balance. Transaction failed.\n");
                     break;
                 }
                 else
@@ -101,15 +158,19 @@ int NEFT(char *x)
                     credit -= to_amnt;
                     new_credit = credit;
                     Sleep(3000);
-                    printf("\nTransaction complete.\n");
-                    printf("\nRemaining balance (Current Account): Rupees %.2f", credit);
+                    printf("\n");
+                    pprint(" ");
+                    printf("\b\b\b\b\b\bTransaction complete.\n");
+                    printf("\n");
+                    pprint(" ");
+                    printf("\b\b\b\b\b\bRemaining balance (Current Account): Rupees %.2f", credit);
                     fprintf(f3, "%s %s %s %s %.2f %.2f\n", usernam, to_name, to_accnt_no, to_ifsc_cd, -to_amnt, credit);
                     fclose(f3);
                 }
                 break;
 
             default:
-                printf("\nPlease enter a valid option\n");
+                printf("\Please enter a valid option\n");
                 goto hj;
             }
             break;
@@ -138,23 +199,51 @@ int NEFT(char *x)
         if (strcmp(strcat(temp_usrnam, to_name), usernam) == 0)
         {
             h1 = ftell(f4);
+            count_4++;
         }
     }
-    while (fscanf(f, "%s %s %s %s %f %f %s %s\n", &usernam, &pass, &accnt_no, &ifsc_cd, &amnt, &credit, &upih, &upip) != EOF)
+    if (count_4 > 0)
     {
-        if (strcmp(to_accnt_no, accnt_no) == 0) 
+        while (fscanf(f, "%s %s %s %s %f %f %s %s\n", &usernam, &pass, &accnt_no, &ifsc_cd, &amnt, &credit, &upih, &upip) != EOF)
         {
-            printf("\n%s", usernam);
-            system("pause");
-            amnt_2 = amnt + to_amnt;
-            int h = strlen(usernam);
-            fseek(f, h1, SEEK_SET);
-            fseek(f, -h - 1, SEEK_CUR);
-            fprintf(f, "%s %s %s %s %.2f %.2f ", usernam, pass, accnt_no, ifsc_cd, amnt_2, credit);
-            fprintf(f3, "%s %s %s%.2f %.2f\n", usernam, x, "+", to_amnt, credit);
-            fseek(f, 0, SEEK_END);
-            break;
+            if (strcmp(to_accnt_no, accnt_no) == 0)
+            {
+                amnt_2 = amnt + to_amnt;
+                int h = strlen(usernam);
+                fseek(f, h1, SEEK_SET);
+                fseek(f, -h - 1, SEEK_CUR);
+                fprintf(f, "%s %s %s %s %.2f %.2f", usernam, pass, accnt_no, ifsc_cd, amnt_2, credit);
+                fprintf(f3, "%s %s %s%.2f %.2f\n", usernam, x, "+", to_amnt, credit);
+                fseek(f, 0, SEEK_END);
+                break;
+            }
         }
+        ptr = fopen("record.dat", "r+");
+        while (fgets(temp_accno, 11, ptr) != EOF)
+        {
+            if (strcmp(to_accnt_no, temp_accno) == 0)
+            {
+                d2 = ftell(ptr);
+                break;
+            }
+        }
+        fseek(ptr, 0, SEEK_SET);
+        while (fscanf(ptr, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d", &add.acc_no, add.name, &add.dob.day, &add.dob.month, &add.dob.year, &add.ifsc, &add.pin, &add.phone, add.acc_type, &add.amt, &add.deposit.day, &add.deposit.month, &add.deposit.year) != EOF)
+        {
+            char a[100];
+            sprintf(a, "%ld", add.acc_no);
+            if (strcmp(to_accnt_no, a) == 0)
+            {
+                amnt_2 = add.amt + to_amnt;
+                int h2 = strlen(a);
+                fseek(ptr, d2, SEEK_SET);
+                fseek(ptr, -h2, SEEK_CUR);
+                fprintf(ptr, "%ld %s %d/%d/%d %s %d %s %s %f %d/%d/%d", add.acc_no, add.name, add.dob.day, add.dob.month, add.dob.year, add.ifsc, add.pin, add.phone, add.acc_type, amnt_2, add.deposit.day, add.deposit.month, add.deposit.year);
+                fseek(ptr, 0, SEEK_CUR);
+                break;
+            }
+        }
+        fclose(ptr);
     }
     fclose(f);
     fclose(f4);

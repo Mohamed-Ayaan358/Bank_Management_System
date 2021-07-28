@@ -7,7 +7,7 @@
 int balance_enq(char *x)
 {
 	FILE* f;
-	char ch, name[100], usernam[110], pass[9], accnt_no[11], ifsc_cd[12], phone[11], upih[16], upip[9];
+	char ch, name[100], usernam[110], pass[9], accnt_no[11], ifsc_cd[14], phone[11], upih[16], upip[9];
 	float amnt, credit;
 	amnt = credit = 0.000000;
 	credit = 100000;
@@ -17,8 +17,12 @@ int balance_enq(char *x)
 	{
 		if (strcmp(usernam, x) == 0)
 		{
-			printf("\nSavings Account Balance: Rupees %.2f", amnt);
-			printf("\nReady Credit: Rupees %.2f", credit);
+			printf("\n\n");
+			pprint(" ");
+			printf("\b\b\b\b\b\bSavings Account Balance: Rupees %.2f", amnt);
+			printf("\n");
+			pprint(" ");
+			printf("\b\b\b\b\b\bReady Credit: Rupees %.2f", credit);
 			break;
 		}
 	}

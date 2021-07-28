@@ -9,7 +9,7 @@ int display(char *x)
     FILE *f;
     f = fopen("online_rec.dat", "a+");
     int len = 0;
-    char usernam[110], pass[9], accnt_no[11], ifsc_cd[12], upih[16], upip[9];
+    char usernam[110], pass[9], accnt_no[11], ifsc_cd[14], upih[16], upip[9];
     float amnt, credit;
     amnt = credit = 0.000000;
     credit = 100000;

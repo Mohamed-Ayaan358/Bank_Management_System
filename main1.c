@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <stdbool.h>
-#include "header.h"
+#include "Header.h"
 
 void close();
 int j;
@@ -12,19 +12,37 @@ void menu()
     int choice;
     char password[10] = "pass";
     char check[10];
-    system("cls");
-ch:
-    printf("\n\n\t\t\t\t\tBANKING MANAGEMENT SYSTEM");
-    printf("\n\n\t\t\t\t  \xB2\xB2\xB2\xB2\xB2 WELCOME TO THE MAIN MENU \xB2\xB2\xB2\xB2\xB2");
-    printf("\n\n\t\t[1] Create a new account");                 //DONE
-    printf("\n\t\t[2] Update information of existing account"); //DONE
-    printf("\n\t\t[3] Transactions");
-    printf("\n\t\t[4] Check the details of existing account");
-    printf("\n\t\t[5] Remove existing account");
-    printf("\n\t\t[6] View customer's list"); //DONE       //MAYBE TRY OUT A UPI TRANSACTION SYSTEM
-    printf("\n\t\t[7] Exit");
-
-    printf("\n\n\t\t Enter your choice : ");
+ch: system("cls");
+    printf("\n\n");
+    pprint(" ");
+    printf("\b\b\b\b\b\bBANKING MANAGEMENT SYSTEM\n");
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b\b\b\xB2\xB2\xB2\xB2\xB2 WELCOME TO THE MAIN MENU \xB2\xB2\xB2\xB2\xB2\n");
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b[1] Create a new account");//DONE
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b[2] Update information of existing account"); //DONE
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b[3] Transactions");
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b[4] Check the details of existing account");
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b[5] Remove existing account");
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b[6] View customer's list"); //DONE       //MAYBE TRY OUT A UPI TRANSACTION SYSTEM
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b[7] Exit\n");
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\bEnter your choice : ");
     scanf("%d", &choice);
 
     system("cls");
@@ -97,7 +115,7 @@ ret:
     case 7:
         printf("Have a good day");
         Sleep(3000);
-        close(); //Function to close program
+        //close(); //Function to close program
         break;
 
     default:
@@ -108,6 +126,36 @@ ret:
 }
 int main()
 {
-    menu();
+    int ch;
+lb: system("CLS");
+    printf("\n\n");
+    pprint(" ");
+    printf("\b\b\b\b\b\b\xB2\xB2\xB2\xB2\xB2 WELCOME TO ANONYMOUS BANKING SYSTEMS \xB2\xB2\xB2\xB2\xB2\n\n");
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\bCHOOSE YOUR MODE OF BANKING:\n");
+    printf("\n");
+    pprint(" ");
+    printf("\b\b\b\b[1] BANK\n");
+    pprint(" ");
+    printf("\b\b\b\b[2] ONLINE BANKING\n");
+    scanf("%d", &ch);
+    switch (ch)
+    {
+    case 1:
+        menu();
+        break;
+
+    case 2:
+        online();
+        break;
+
+    default:
+        printf("\n");
+        pprint(" ");
+        printf("\b\b\b\bPlease enter a valid option\n");
+        Sleep(2000);
+        goto lb;
+    }
     return 0;
 }
