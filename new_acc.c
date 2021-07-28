@@ -12,7 +12,7 @@ void close();
 void new_acc()
 {
     int choice;
-    FILE *ptr;
+    FILE* ptr;
     srand(time(0));
     ptr = fopen("record.dat", "a+");
     system("cls"); /*It clears out the cmd page*/
@@ -56,23 +56,23 @@ account_no:
     char ch[20];
     printf("\nType of account:\n\t#Saving[S]\n\t#Current[C]\n\t#Fixed1(for 1 year)[F1]\n\t#Fixed2(for 2 years)[F2]\n\t#Fixed3(for 3 years)[F3]\n\n\tEnter your choice:");
     scanf("%s", ch);
-    if (strcmpi(ch, "S") == 0)
+    if (strcmp(ch, "S") == 0)
     {
         strcpy(add.acc_type, "Saving");
     }
-    else if (strcmpi(ch, "C") == 0)
+    else if (strcmp(ch, "C") == 0)
     {
         strcpy(add.acc_type, "Current");
     }
-    else if (strcmpi(ch, "F1") == 0)
+    else if (strcmp(ch, "F1") == 0)
     {
         strcpy(add.acc_type, "Fixed1");
     }
-    else if (strcmpi(ch, "F2") == 0)
+    else if (strcmp(ch, "F2") == 0)
     {
         strcpy(add.acc_type, "Fixed2");
     }
-    else if (strcmpi(ch, "F3") == 0)
+    else if (strcmp(ch, "F3") == 0)
     {
         strcpy(add.acc_type, "Fixed3");
     }
